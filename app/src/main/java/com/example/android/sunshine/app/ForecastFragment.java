@@ -42,7 +42,7 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.forecastfragment,menu);
+        inflater.inflate(R.menu.forecastfragment, menu);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ForecastFragment extends Fragment {
                 // Construct the URL for the OpenWeatherMap query
                 // Possible parameters are avaiable at OWM's forecast API page, at
                 // http://openweathermap.org/API#forecast
-                String baseUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7";
+                String baseUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Neiva,CO&mode=json&units=metric&cnt=7";
                 String apiKey = "&APPID=" + BuildConfig.OPEN_WEATHER_MAP_API_KEY;
                 URL url = new URL(baseUrl.concat(apiKey));
 
@@ -134,6 +134,9 @@ public class ForecastFragment extends Fragment {
                     return null;
                 }
                 forecastJsonStr = buffer.toString();
+
+                Log.v(LOG_TAG, "Forecast JSON string: " + forecastJsonStr);
+
             } catch (IOException e) {
                 Log.e(LOG_TAG, "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in attemping
@@ -141,7 +144,7 @@ public class ForecastFragment extends Fragment {
                 return null;
             } finally {
                 if (urlConnection != null) {
-                urlConnection.disconnect();
+                    urlConnection.disconnect();
                 }
                 if (reader != null) {
                     try {
