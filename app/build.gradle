@@ -20,6 +20,9 @@ android {
             debuggable true
         }
     }
+    buildTypes.each {
+        it.buildConfigField 'String', 'OPEN_WEATHER_MAP_API_KEY', "\"05e95e0433cac2b271d1cd4feb7364c3\""
+    }
 }
 
 dependencies {
