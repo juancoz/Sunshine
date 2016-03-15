@@ -7,5 +7,5 @@
         android:key="@string/pref_location_key"
         android:singleLine="true"
         android:title="@string/pref_location_label" />
-    
+
 </PreferenceScreen>
